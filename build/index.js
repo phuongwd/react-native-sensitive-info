@@ -30,6 +30,8 @@ var __assign = function() {
     return __assign.apply(this, arguments);
 };
 
+// Use legacy NativeModules bridge directly for compatibility with New Architecture
+// TurboModuleRegistry.get() returns an empty module object for legacy modules
 var RNSensitiveInfo = reactNative.NativeModules.RNSensitiveInfo;
 var RNSensitiveInfo$1 = __assign({}, RNSensitiveInfo);
 
