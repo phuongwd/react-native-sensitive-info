@@ -4,24 +4,12 @@ import { NativeModules } from 'react-native';
 // TurboModuleRegistry.get() returns an empty module object for legacy modules
 const RNSensitiveInfo = NativeModules.RNSensitiveInfo;
 
-export default {
-  ...RNSensitiveInfo,
-  // setInvalidatedByBiometricEnrollment(
-  //   invalidatedByBiometricEnrollment
-  // ): Function {
-  //   if (RNSensitiveInfo.setInvalidatedByBiometricEnrollment == null) {
-  //     return;
-  //   }
+if (!RNSensitiveInfo) {
+  console.error('[RNSensitiveInfo] Native module not found!');
+  console.error('[RNSensitiveInfo] Available modules:', Object.keys(NativeModules));
+  throw new Error(
+    'RNSensitiveInfo: Native module is not available. Make sure the app is built correctly and the native module is linked.'
+  );
+}
 
-  //   return RNSensitiveInfo.setInvalidatedByBiometricEnrollment(
-  //     invalidatedByBiometricEnrollment
-  //   );
-  // },
-  // cancelFingerprintAuth() {
-  //   if (RNSensitiveInfo.cancelFingerprintAuth == null) {
-  //     return;
-  //   }
-
-  //   return RNSensitiveInfo.cancelFingerprintAuth();
-  // },
-};
+export default RNSensitiveInfo;
